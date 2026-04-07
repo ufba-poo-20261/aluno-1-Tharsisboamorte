@@ -16,7 +16,7 @@ package br.ufba.poo.lista2;
  */
 public class Aluno {
 
-    private String matricula;
+    private final String matricula;
 
     private String nome;
 
@@ -29,9 +29,16 @@ public class Aluno {
     public String getNome() {return nome;}
 
     public Aluno(String matricula, String nome) {
-        //Todo: Fazer um metodo equals para compara matriculas.
+        this.matricula = matricula;
+        this.nome = nome;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Aluno)) return false;
+        Aluno aluno = (Aluno) obj;
 
+        return this.matricula.equals(aluno.matricula);
+    }
 }
 
